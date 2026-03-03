@@ -255,3 +255,67 @@ body[data-workshop]::before {
     font-weight: inherit;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .reveal {
+    background-color: #111315 !important;
+    color: #f1f3f5 !important;
+  }
+
+  .reveal .slides section {
+    background-color: #111315 !important;
+    color: #f1f3f5 !important;
+  }
+
+  .reveal h1,
+  .reveal h2,
+  .reveal h3,
+  .reveal h4 {
+    color: #f1f3f5 !important;
+  }
+
+  .reveal a {
+    color: #ff4d4d !important;
+  }
+
+  .reveal .slide-number {
+    color: #aeb6bf !important;
+  }
+
+  .reveal blockquote {
+    color: #d3d8de;
+    border-left-color: #cc0000;
+  }
+
+  .reveal pre code {
+    background: #1a1f24;
+    border-color: #2a323b;
+    color: #e9edf1;
+  }
+
+  #title-slide {
+    background: #111315 !important;
+  }
+
+  #title-slide h1,
+  #title-slide h2,
+  #title-slide .title,
+  #title-slide .subtitle,
+  #title-slide .date,
+  #title-slide .quarto-title-author-name {
+    color: #ffffff !important;
+  }
+
+  #title-slide .quarto-title-author-email {
+    color: #ff6b6b !important;
+  }
+
+  .reveal .footer.footer-default p {
+    color: #aeb6bf !important;
+  }
+
+  body[data-workshop]::before {
+    background: #cc0000;
+    color: #ffffff;
+  }
+}

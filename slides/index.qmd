@@ -21,30 +21,61 @@ format:
   content: "";
   position: absolute;
   left: 50%;
-  top: -140px;
+  top: -136px;
   transform: translateX(-50%);
-  width: 520px;
-  height: 145px;
+  width: 540px;
+  height: 150px;
   pointer-events: none;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  background-image: url("assets/lib_logo_whiteBG.svg");
+  background-image: url("assets/ncstate-univlib-2x1-b-h-2clwht-rgb.png");
   z-index: 9999 !important;
 }
 
 /* Logo on every non-title slide without affecting layout flow */
 .reveal .slides > section:not(#title-slide) {
-  background-image: url("assets/lib_logo_whiteBG.svg");
+  background-image: url("assets/ncstate-univlib-2x1-b-h-2clwht-rgb.png");
   background-repeat: no-repeat;
   background-position: right 2px bottom 2px;
   background-size: 230px auto;
 }
 </style>
 
-### Add your content
+### Data Science Services at NC State
 
-Add your slides below. Use `---` to separate slides.
+To make an unordered list in Quarto (Markdown), use dashes `-` or asterisks `*`.
+
+- First item
+- Second item
+- Third item
+
+---
+
+### Data Science Services at NC State
+
+::: {.columns}
+::: {.column width="33%"}
+<span style="font-size:2em;" aria-label="Magnifying glass">🔍</span><br>
+Data Science Consulting
+:::
+::: {.column width="33%"}
+<span style="font-size:2em;" aria-label="Classroom">🎓</span><br>
+Workshops & Instruction
+:::
+::: {.column width="33%"}
+<span style="font-size:2em;" aria-label="Workstation">🖥️</span><br>
+Specialized Spaces
+<ul style="font-size:0.55em; margin-top: 6px;">
+  <li>Even more powerful workstations</li>
+  <li>Additional accessible software options</li>
+  <li>Expert help with custom environment setup</li>
+  <li>Longer and flexible reservations</li>
+  <li>On-site technical support</li>
+</ul>
+
+:::
+:::
 
 ---
 

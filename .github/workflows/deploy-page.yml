@@ -69,7 +69,9 @@ jobs:
 
       - name: Rewrite fullscreen background path to slides-local assets
         run: |
-          sed -i 's|\../assets/|assets/|g' slides/fullscreen.html
+          if [ -f slides/fullscreen.html ]; then
+            sed -i 's|\../assets/|assets/|g' slides/fullscreen.html
+          fi
 
       - name: Upload Pages artifact (slides as site root)
         uses: actions/upload-pages-artifact@v3
