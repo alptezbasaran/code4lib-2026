@@ -1,0 +1,14 @@
+project:
+  type: default
+
+format:
+  revealjs:
+    theme: [default, slides/theme/theme.scss]
+    slide-number: true
+    transition: fade
+    background-transition: fade
+    code-overflow: wrap
+    toc: false
+    footer: "Code4Lib 2026"
+
+editor: visual

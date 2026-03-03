@@ -1,0 +1,49 @@
+# Quarto build artifacts
+_site/
+_freeze/
+.quarto/
+.cache/
+.sass-cache/
+.ipynb_checkpoints/
+
+# Reveal/Quarto generated HTML from slides
+!slides/fullscreen.html
+slides/*.html
+slides/index_files/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.eggs/
+
+# Environments
+.env
+.env.local
+.envrc
+
+# Node
+node_modules/
+
+# OS / Editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Docker
+.dockerignore
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Backup files
+*.bak
+*.backup
+
+/.quarto/

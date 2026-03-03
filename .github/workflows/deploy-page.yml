@@ -1,0 +1,88 @@
+name: Deploy slides to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "slides/**"
+      - "_quarto.yml"
+      - "assets/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      QUARTO_CACHE_DIR: ${{ github.workspace }}/.quarto-cache
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Quarto cache and libs
+        uses: actions/cache@v4
+        with:
+          path: |
+            .quarto-cache
+            ~/.cache/quarto
+          key: ${{ runner.os }}-quarto-${{ hashFiles('_quarto.yml', 'slides/index.qmd', 'slides/theme/**') }}
+          restore-keys: |
+            ${{ runner.os }}-quarto-
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.6.40
+
+      - name: Render slides
+        run: |
+          quarto render slides/index.qmd --to revealjs
+
+      - name: Restore fullscreen.html if cleaned by render
+        run: |
+          git checkout -- slides/fullscreen.html || true
+
+      - name: Include assets in Pages artifact
+        run: |
+          mkdir -p slides/assets
+          rsync -av assets/ slides/assets/ || true
+
+      - name: Copy assets next to Reveal CSS
+        run: |
+          mkdir -p slides/index_files/libs/revealjs/assets
+          mkdir -p slides/index_files/libs/revealjs/dist/assets
+          rsync -av assets/ slides/index_files/libs/revealjs/assets/ || true
+          rsync -av assets/ slides/index_files/libs/revealjs/dist/assets/ || true
+
+      - name: Rewrite asset paths for GitHub Pages
+        run: |
+          sed -i 's|src="\../assets/|src="assets/|g' slides/index.html
+          sed -i 's|url("../assets/|url("assets/|g' slides/index.html
+
+      - name: Rewrite fullscreen background path to slides-local assets
+        run: |
+          sed -i 's|\../assets/|assets/|g' slides/fullscreen.html
+
+      - name: Upload Pages artifact (slides as site root)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: slides
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

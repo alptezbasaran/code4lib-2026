@@ -1,0 +1,61 @@
+---
+title: "Get Coding Help at the Libraries!"
+subtitle: "Code4Lib 2026"
+author:
+  - name: "Alp Tezbasaran"
+    email: "alptezbasaran@ncsu.edu"
+  - name: "Shannon Ricci"
+    email: "swbrown@ncsu.edu"
+date: today
+format:
+  revealjs:
+    incremental: false
+    preview-links: auto
+    chalkboard: true
+    slide-number: true
+---
+
+<style>
+/* Single title-slide logo, positioned above the horizontal line */
+.reveal .slides section:first-child::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -140px;
+  transform: translateX(-50%);
+  width: 520px;
+  height: 145px;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("assets/lib_logo_whiteBG.svg");
+  z-index: 9999 !important;
+}
+
+/* Logo on every non-title slide without affecting layout flow */
+.reveal .slides > section:not(#title-slide) {
+  background-image: url("assets/lib_logo_whiteBG.svg");
+  background-repeat: no-repeat;
+  background-position: right 2px bottom 2px;
+  background-size: 230px auto;
+}
+</style>
+
+### Add your content
+
+Add your slides below. Use `---` to separate slides.
+
+---
+
+## Second Slide
+
+Add your second-slide content here.
+
+---
+
+## Questions?
+
+<p class="thank-you-inline">THANK YOU</p>
+
+<a href="mailto:you@example.com">you@example.com</a>
